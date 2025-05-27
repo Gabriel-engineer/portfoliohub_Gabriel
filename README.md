@@ -24,11 +24,6 @@ Este é um projeto simples de calculadora de linha de comando desenvolvida em Py
 
 ---
 
-## 🤝 Contribuição
-
-Sinta-se à vontade para abrir issues ou pull requests se tiver sugestões de melhoria!
-
----
 
 ## 📄 Licença
 

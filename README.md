@@ -29,7 +29,7 @@ Este é um projeto simples de calculadora de linha de comando desenvolvida em Py
 
 Este projeto está licenciado sob a Licença MIT.
 
-# 🧮 Calculadora Simples em Java (Swing GUI)
+# 🧮 Calculadora Simples em Java 
 
 Este projeto implementa uma calculadora básica com interface gráfica de usuário (GUI) utilizando a biblioteca Swing do Java. É uma aplicação desktop simples que permite realizar operações aritméticas fundamentais.
 

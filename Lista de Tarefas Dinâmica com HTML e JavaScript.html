@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas Dinâmica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Cor de fundo Tailwind gray-100 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 16px; /* Adiciona padding para telas menores */
+        }
+        .container {
+            background-color: white;
+            padding: 24px; /* p-6 */
+            border-radius: 12px; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            width: 100%;
+            max-width: 500px; /* Define uma largura máxima para o container */
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0; /* py-3 */
+            border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+        }
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        .task-item.completed span {
+            text-decoration: line-through;
+            color: #9ca3af; /* text-gray-400 */
+        }
+        .task-actions button {
+            margin-left: 8px; /* ml-2 */
+        }
+        /* Estilo para o modal de confirmação */
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Garante que o modal fique na frente */
+        }
+        .modal-content {
+            background-color: white;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .modal-buttons button {
+            margin: 0 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .modal-buttons .confirm-btn {
+            background-color: #ef4444; /* bg-red-500 */
+            color: white;
+        }
+         .modal-buttons .cancel-btn {
+            background-color: #d1d5db; /* bg-gray-300 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">Minha Lista de Tarefas</h1>
+
+        <div class="flex mb-6">
+            <input type="text" id="taskInput" class="flex-grow p-3 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="Adicionar nova tarefa...">
+            <button id="addTaskBtn" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-r-lg font-semibold">Adicionar</button>
+        </div>
+
+        <ul id="taskList" class="space-y-2">
+            <!-- Exemplo de item de tarefa (para referência, será gerado dinamicamente)
+            <li class="task-item">
+                <span class="cursor-pointer">Comprar pão</span>
+                <div class="task-actions">
+                    <button class="text-sm bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded-md">Concluir</button>
+                    <button class="text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded-md">Remover</button>
+                </div>
+            </li>
+            -->
+        </ul>
+
+        <div class="mt-6 text-center">
+            <button id="clearAllTasksBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-semibold">Limpar Todas as Tarefas</button>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modalMessage" class="mb-4 text-lg">Tem certeza?</p>
+            <div class="modal-buttons">
+                <button id="confirmActionBtn" class="confirm-btn">Sim</button>
+                <button id="cancelActionBtn" class="cancel-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Elementos do DOM
+        const taskInput = document.getElementById('taskInput');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const taskList = document.getElementById('taskList');
+        const clearAllTasksBtn = document.getElementById('clearAllTasksBtn');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const confirmActionBtn = document.getElementById('confirmActionBtn');
+        const cancelActionBtn = document.getElementById('cancelActionBtn');
+
+        let currentAction = null; // Para armazenar a ação a ser confirmada (ex: remover uma tarefa específica ou limpar todas)
+        let taskToRemoveElement = null; // Para armazenar o elemento da tarefa a ser removida
+
+        // Carregar tarefas do localStorage ao iniciar
+        loadTasks();
+
+        // Função para adicionar uma nova tarefa
+        function addTask() {
+            const taskText = taskInput.value.trim();
+            if (taskText === "") {
+                showCustomAlert("Por favor, insira uma tarefa.");
+                return;
+            }
+
+            createTaskElement(taskText, false); // false indica que a tarefa não está completa
+            taskInput.value = ""; // Limpa o campo de entrada
+            saveTasks(); // Salva as tarefas no localStorage
+        }
+
+        // Função para criar o elemento HTML de uma tarefa
+        function createTaskElement(text, isCompleted) {
+            const li = document.createElement('li');
+            li.className = 'task-item flex items-center justify-between p-3 bg-white rounded-lg shadow mb-2';
+            if (isCompleted) {
+                li.classList.add('completed');
+            }
+
+            const taskSpan = document.createElement('span');
+            taskSpan.textContent = text;
+            taskSpan.className = 'cursor-pointer flex-grow';
+            taskSpan.addEventListener('click', () => toggleComplete(li));
+
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'task-actions';
+
+            const completeBtn = document.createElement('button');
+            completeBtn.textContent = isCompleted ? 'Desfazer' : 'Concluir';
+            completeBtn.className = `text-sm ${isCompleted ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-500 hover:bg-green-600'} text-white py-1 px-3 rounded-md font-medium`;
+            completeBtn.addEventListener('click', () => toggleComplete(li));
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remover';
+            removeBtn.className = 'text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md ml-2 font-medium';
+            removeBtn.addEventListener('click', () => {
+                taskToRemoveElement = li;
+                showConfirmationModal("Tem certeza que deseja remover esta tarefa?", () => {
+                    taskList.removeChild(taskToRemoveElement);
+                    saveTasks();
+                });
+            });
+
+            actionsDiv.appendChild(completeBtn);
+            actionsDiv.appendChild(removeBtn);
+
+            li.appendChild(taskSpan);
+            li.appendChild(actionsDiv);
+            taskList.appendChild(li);
+        }
+
+        // Função para marcar/desmarcar tarefa como completa
+        function toggleComplete(taskItem) {
+            taskItem.classList.toggle('completed');
+            const completeBtn = taskItem.querySelector('.task-actions button:first-child');
+            const isCompleted = taskItem.classList.contains('completed');
+            completeBtn.textContent = isCompleted ? 'Desfazer' : 'Concluir';
+            completeBtn.className = `text-sm ${isCompleted ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-500 hover:bg-green-600'} text-white py-1 px-3 rounded-md font-medium`;
+            saveTasks();
+        }
+
+        // Função para salvar tarefas no localStorage
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll('#taskList li').forEach(taskItem => {
+                tasks.push({
+                    text: taskItem.querySelector('span').textContent,
+                    completed: taskItem.classList.contains('completed')
+                });
+            });
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        // Função para carregar tarefas do localStorage
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks'));
+            if (tasks) {
+                tasks.forEach(task => createTaskElement(task.text, task.completed));
+            }
+        }
+
+        // Função para limpar todas as tarefas
+        function clearAllTasks() {
+            showConfirmationModal("Tem certeza que deseja remover TODAS as tarefas?", () => {
+                taskList.innerHTML = ''; // Remove todos os itens da lista
+                saveTasks(); // Atualiza o localStorage
+            });
+        }
+
+        // Função para mostrar o modal de confirmação
+        function showConfirmationModal(message, action) {
+            modalMessage.textContent = message;
+            currentAction = action;
+            confirmationModal.classList.remove('hidden');
+        }
+
+        // Função para esconder o modal de confirmação
+        function hideConfirmationModal() {
+            confirmationModal.classList.add('hidden');
+            currentAction = null;
+            taskToRemoveElement = null;
+        }
+
+        // Função para mostrar um alerta customizado (substitui o alert() padrão)
+        function showCustomAlert(message) {
+            // Cria elementos do alerta
+            const alertBox = document.createElement('div');
+            alertBox.style.position = 'fixed';
+            alertBox.style.top = '20px';
+            alertBox.style.left = '50%';
+            alertBox.style.transform = 'translateX(-50%)';
+            alertBox.style.backgroundColor = '#f8d7da'; // Cor de alerta Bootstrap
+            alertBox.style.color = '#721c24';
+            alertBox.style.padding = '15px';
+            alertBox.style.borderRadius = '8px';
+            alertBox.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+            alertBox.style.zIndex = '2000'; // Acima do modal
+            alertBox.textContent = message;
+
+            document.body.appendChild(alertBox);
+
+            // Remove o alerta após alguns segundos
+            setTimeout(() => {
+                alertBox.remove();
+            }, 3000);
+        }
+
+
+        // Event Listeners
+        addTaskBtn.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+        clearAllTasksBtn.addEventListener('click', clearAllTasks);
+
+        confirmActionBtn.addEventListener('click', () => {
+            if (currentAction) {
+                currentAction();
+            }
+            hideConfirmationModal();
+        });
+
+        cancelActionBtn.addEventListener('click', hideConfirmationModal);
+
+    </script>
+</body>
+</html>

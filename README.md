@@ -29,3 +29,4 @@ Se for de 1 a 4, o programa solicita dois números e exibe o resultado da opera�
 Se o usuário digitar 5, o programa encerra com uma mensagem de despedida.
 
 O código também trata entradas inválidas, como letras ou divisão por zero.
+

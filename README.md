@@ -5,7 +5,7 @@ Sou um estudante de Engenharia de Software no CEUB, com 19 anos e muita paixão 
 
 Aqui no meu GitHub, você encontrará meus projetos e estudos, que refletem minha jornada no mundo da programação. Estou sempre buscando novos desafios e oportunidades para colaborar.
 
-🧮 Calculadora Simples em Python
+# 🧮 Calculadora Simples em Python
 Este é um projeto básico de uma calculadora interativa em Python, feita para funcionar no terminal. A calculadora permite que o usuário escolha uma operação matemática, insira dois números e veja o resultado na tela.
 
 🔧 Funcionalidades

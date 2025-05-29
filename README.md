@@ -55,4 +55,45 @@ TailwindCSS
 
 LocalStorage
 
+# 🧮 calculo_media_notas
+Este programa tem como objetivo calcular a média das notas inseridas pelo usuário. O funcionamento é simples: ele solicita notas uma a uma até que o valor -1 seja digitado, indicando o fim da entrada. Após isso, ele calcula e exibe:
 
+A quantidade total de notas digitadas (número de alunos);
+
+A média geral da turma;
+
+A média formatada com duas casas decimais.
+
+Esse exercício ajuda a entender o uso de laços while, listas e funções de agregação como sum() e len(), além da estrutura condicional if para validar se houve entrada de dados.
+
+# 🧮 media_numeros_pares
+Este script recebe uma sequência de números inteiros digitados pelo usuário até que ele informe o valor 0, que encerra a entrada. Durante esse processo, apenas os números pares são armazenados. Ao final, o programa:
+
+Calcula e exibe a média dos números pares;
+
+Exibe os números pares digitados em formato de lista;
+
+Mostra esses números na vertical, um por linha.
+
+Esse exercício reforça conceitos como verificação de números pares com o operador %, uso de listas, estruturas de repetição while, e verificações condicionais.
+
+# 🧮 ordenacao_lista_inteiros
+O objetivo deste programa é coletar uma lista de números inteiros digitados pelo usuário até que o número 0 seja informado. Depois disso, ele:
+
+Ordena os números em ordem crescente;
+
+Exibe o menor e o maior valor da lista;
+
+Mostra os números digitados em formato horizontal e vertical;
+
+Apresenta os valores com seus respectivos índices da lista.
+
+Este exercício é ótimo para praticar:
+
+Manipulação e ordenação de listas (.sort());
+
+Exibição de dados de diferentes formas;
+
+Uso de laços for com contadores;
+
+Entendimento do funcionamento de índices em listas.

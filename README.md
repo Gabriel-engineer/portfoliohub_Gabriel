@@ -21,7 +21,7 @@ Aqui você encontrará pequenos sistemas desenvolvidos em **Python** e uma aplic
 Scripts simples para treinar lógica e estruturas básicas:
 
 - [`calculadora.py`](calculadora.py) – Uma calculadora simples no terminal.
-- [`calculo_media_notas.py`](calculo_media_notas.py) – Calcula a média de 3 notas.
+- [`calculo_media_notas.py`](calculo_media_notas.py) – Calcula a média de notas.
 - [`media_numeros_pares.py`](media_numeros_pares.py) – Calcula a média dos números pares.
 - [`ordenacao_lista_inteiros.py`](ordenacao_lista_inteiros.py) – Ordena uma lista de inteiros fornecida pelo usuário.
 

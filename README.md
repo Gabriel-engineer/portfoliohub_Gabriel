@@ -33,7 +33,7 @@ O código também trata entradas inválidas, como letras ou divisão por zero.
 # ✅ LISTA DE TAREFAS DINAMICAS EM HTML E JAVASCRIPT
 Este projeto é uma lista de tarefas interativa desenvolvida com HTML, JavaScript e TailwindCSS. Ele permite que o usuário adicione, conclua, remova ou limpe todas as tarefas de forma dinâmica, com salvamento automático no localStorage.
 
-🧩 Funcionalidades
+🔧 Funcionalidades
 Adicionar novas tarefas
 
 Marcar tarefas como concluídas ou desmarcar

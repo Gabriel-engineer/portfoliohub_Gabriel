@@ -30,3 +30,8 @@ Scripts simples para treinar lógica e estruturas básicas:
 - [`Lista de Tarefas Dinâmica`](Lista%20de%20Tarefas%20Din%C3%A2mica%20com%20HTML%20e%20JavaScript.html) – Uma página web interativa onde é possível adicionar e remover tarefas.
 
 ---
+# 📞 Contato
+E-mail: gabriel.lgomes@sempreceub.com
+
+GitHub: @Gabriel-engineer
+

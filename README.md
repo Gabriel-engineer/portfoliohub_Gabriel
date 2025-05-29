@@ -5,7 +5,7 @@ Sou um estudante de Engenharia de Software no CEUB, com 19 anos e muita paixão 
 
 Aqui no meu GitHub, você encontrará meus projetos e estudos, que refletem minha jornada no mundo da programação. Estou sempre buscando novos desafios e oportunidades para colaborar.
 
-# 🧮 Calculadora Simples em Python
+# 🧮 CALCULADORA SIMPLES EM PYTHON
 Este é um projeto básico de uma calculadora interativa em Python, feita para funcionar no terminal. A calculadora permite que o usuário escolha uma operação matemática, insira dois números e veja o resultado na tela.
 
 🔧 Funcionalidades
@@ -30,7 +30,7 @@ Se o usuário digitar 5, o programa encerra com uma mensagem de despedida.
 
 O código também trata entradas inválidas, como letras ou divisão por zero.
 
-# ✅ Lista de Tarefas Dinâmica com HTML e JavaScript
+# ✅ LISTA DE TAREFAS DINAMICAS EM HTML E JAVASCRIPT
 Este projeto é uma lista de tarefas interativa desenvolvida com HTML, JavaScript e TailwindCSS. Ele permite que o usuário adicione, conclua, remova ou limpe todas as tarefas de forma dinâmica, com salvamento automático no localStorage.
 
 🧩 Funcionalidades

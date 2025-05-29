@@ -55,23 +55,4 @@ TailwindCSS
 
 LocalStorage
 
-# 🎯 Jogo de Adivinhar o Número em Java
-Este é um projeto simples feito em Java que simula um jogo de adivinhação. O programa escolhe aleatoriamente um número entre 1 e 100, e o jogador tem 10 tentativas para adivinhar corretamente.
 
-🧠 Como funciona
-O programa gera um número aleatório entre 1 e 100.
-
-O usuário digita palpites para tentar descobrir o número.
-
-A cada tentativa, o programa informa se o palpite foi muito baixo ou muito alto.
-
-O usuário tem no máximo 10 tentativas.
-
-Se acertar, o programa exibe uma mensagem de parabéns. Caso contrário, mostra o número correto ao final.
-
-🔁 Fluxo do Jogo
-✅ Entrada válida: número entre 1 e 100.
-
-❌ Entrada inválida (ex: letra ou número fora do intervalo): o programa avisa e permite nova tentativa sem contar erro.
-
-💬 O jogo dá dicas: se o número digitado foi maior ou menor que o número correto.

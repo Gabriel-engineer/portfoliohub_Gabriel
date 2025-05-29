@@ -55,7 +55,7 @@ TailwindCSS
 
 LocalStorage
 
-# 🧮 calculo_media_notas
+# 🧮 CALCULO DAS MEDIAS EM PYTHON
 Este programa tem como objetivo calcular a média das notas inseridas pelo usuário. O funcionamento é simples: ele solicita notas uma a uma até que o valor -1 seja digitado, indicando o fim da entrada. Após isso, ele calcula e exibe:
 
 A quantidade total de notas digitadas (número de alunos);
@@ -66,7 +66,7 @@ A média formatada com duas casas decimais.
 
 Esse exercício ajuda a entender o uso de laços while, listas e funções de agregação como sum() e len(), além da estrutura condicional if para validar se houve entrada de dados.
 
-# 🧮 media_numeros_pares
+# 🧮 MEDIA DOS NUMEROS PARES EM PYTHON
 Este script recebe uma sequência de números inteiros digitados pelo usuário até que ele informe o valor 0, que encerra a entrada. Durante esse processo, apenas os números pares são armazenados. Ao final, o programa:
 
 Calcula e exibe a média dos números pares;
@@ -77,7 +77,7 @@ Mostra esses números na vertical, um por linha.
 
 Esse exercício reforça conceitos como verificação de números pares com o operador %, uso de listas, estruturas de repetição while, e verificações condicionais.
 
-# 🧮 ordenacao_lista_inteiros
+# 🧮 ORDENAÇÃO DA LISTA DE NUMEROS INTEIROS EM PYTHON
 O objetivo deste programa é coletar uma lista de números inteiros digitados pelo usuário até que o número 0 seja informado. Depois disso, ele:
 
 Ordena os números em ordem crescente;

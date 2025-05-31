@@ -32,6 +32,6 @@ Scripts simples para treinar lógica e estruturas básicas:
 ---
 # 📞 Contato
 E-mail: gabriel.lgomes@sempreceub.com
-
+linkedln:https://www.linkedin.com/in/gabriel-vasconcelos-lima-gomes-a29a55368/
 GitHub: @Gabriel-engineer
 

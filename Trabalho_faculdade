@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect</title>
+  <style>
+    /* 🎨 Paleta de Cores */
+    :root {
+      --azul-escuro: #0b1f55;
+      --cinza-claro: #F3F4F6;
+      --verde: #22c55e;
+      --branco: #FFFFFF;
+      --roxo: #4d4bc0;
+      --cinza-escuro: #474747;   
+      --verde-escuro:  #0d662e;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: var(--cinza-claro);
+      color: var(--cinza-escuro);
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--azul-escuro), var(--roxo));
+      color: var(--azul-escuro);
+      padding: 25px;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--branco);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--verde);
+    }
+
+    main {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--branco);
+    }
+
+    h2 {
+      color: var(--roxo);
+    }
+
+    p {
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: var(--verde);
+      color: var(--cinza-escuro);
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: var(--verde-escuro);
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: var(--branco);
+      padding: 20px;
+      width: 260px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: var(--azul-escuro);
+      color: var(--branco);
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+    
+  <header>
+    <h1>EduConnect</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Cursos</a>
+      <a href="#">Estudantes</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Conectando Ensino Médio e Universidades</h2>
+    <p>A <strong>EduConnect</strong> é a sua plataforma de apoio educacional: oferecemos cursos preparatórios para vestibulares e ENEM, orientação para adaptação na universidade e dicas para conquistar seu espaço no mercado de trabalho.</p>
+    <button class="btn">Começar Agora</button>
+
+    <div class="cards">
+      <div class="card">
+        <h3> Preparatórios</h3>
+        <p>Cursos e materiais para vestibulares e ENEM.</p>
+      </div>
+      <div class="card">
+        <h3> Universidade</h3>
+        <p>Apoio para adaptação e sucesso acadêmico.</p>
+      </div>
+      <div class="card">
+        <h3> Carreira</h3>
+        <p>Dicas e trilhas para se preparar para o mercado de trabalho.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EduConnect - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
